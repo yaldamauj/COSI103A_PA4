@@ -8,7 +8,8 @@ var toDoItemSchema = Schema( {
   item: String,
   completed: Boolean,
   createdAt: Date,
-  userId: ObjectId
+  priority: Number,
+  userId: {type:ObjectId, ref:'user' }
 } );
 
 module.exports = mongoose.model( 'ToDoItem', toDoItemSchema );

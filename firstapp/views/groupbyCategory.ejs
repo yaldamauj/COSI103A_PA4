@@ -1,0 +1,32 @@
+<!-- This page was created by Brooke. -->
+<h1>Transactions for <%= user.username %></h1>
+<p>Here is your list of things to do!</p>
+• <a href="/transaction"> transaction table</a>
+<br><br>
+<table class="table table-bordered table-striped" style="width:40%">
+    <thead>
+        <tr>
+            <th>category</th>
+            <th>amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%
+            const categories = {};
+            items.forEach((item) => {
+                if (categories[item.category]) {
+                    categories[item.category] += parseFloat(item.amount);
+                  } else {
+                    categories[item.category] = parseFloat(item.amount);
+                  }
+            });
+            Object.keys(categories).forEach((category) => {
+        %>
+        <tr>
+               <td> <%= category %> </td>
+               <td> <%= categories[category] %> </td>
+            </tr>
+            
+            <% }); %>
+    </tbody>
+</table>
